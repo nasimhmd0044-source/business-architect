@@ -7,71 +7,86 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --navy: #0e1c36; --navy-mid: #1a3060; --navy-soft: #2c4a82;
-    --gold: #b8973a; --gold-light: #d4af5a; --gold-pale: #f5eed8;
-    --white: #ffffff; --cream: #faf8f3; --text-dark: #0e1c36;
-    --text-muted: #8a97ab; --border-light: rgba(14,28,54,0.08);
+    --navy-deep: #0a1428;
+    --navy-mid: #14213d;
+    --gold-bright: #d4af37;
+    --gold-soft: #b8973a;
+    --gold-pale: #f4f1e6;
+    --white: #ffffff;
+    --off-white: #fafafa;
+    --text-main: #0a1428;
+    --text-muted: #64748b;
+    --border: rgba(10,20,40,0.08);
+    --shadow: 0 10px 30px -10px rgba(10,20,40,0.15);
   }
+
   * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
   html { scroll-behavior: smooth; }
-  body { font-family: 'Jost', sans-serif; background: var(--cream); color: var(--text-dark); overflow-x: hidden; }
-  body::after { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E"); pointer-events: none; z-index: 100; opacity: 0.3; }
-  .page { max-width: 480px; margin: 0 auto; }
+  body { font-family: 'Jost', sans-serif; background: var(--off-white); color: var(--text-main); line-height: 1.6; }
 
-  /* HERO */
-  .hero { background: var(--navy); padding: 48px 24px 40px; position: relative; overflow: hidden; }
-  .hero-top { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
-  .avatar-frame { flex-shrink: 0; width: 70px; height: 70px; border-radius: 50%; background: linear-gradient(135deg, var(--gold) 0%, #8a6e25 100%); padding: 2px; }
-  .avatar-inner { width: 100%; height: 100%; border-radius: 50%; background: var(--navy-mid); display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 700; color: var(--gold-light); }
-  .hero-name { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 700; color: var(--white); }
-  .hero-title { font-size: 10px; font-weight: 500; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold-light); }
-  .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.08); border-radius: 12px; overflow: hidden; margin-top: 25px; }
-  .stat-item { background: rgba(255,255,255,0.03); padding: 14px 8px; text-align: center; }
-  .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 700; color: var(--gold-light); display: block; }
-  .stat-label { font-size: 9px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 1px; }
+  .page { max-width: 480px; margin: 0 auto; background: var(--white); min-height: 100vh; position: relative; }
 
-  /* AUDIT BANNER */
-  .audit-banner { margin: 24px; border-radius: 16px; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%); padding: 24px; position: relative; }
-  .audit-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; color: var(--white); line-height: 1.2; margin-bottom: 15px; }
-  .cta-btn { width: 100%; padding: 15px; border-radius: 12px; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%); color: var(--navy); font-weight: 700; border: none; cursor: pointer; }
-
-  /* SECTIONS */
-  .section { padding: 35px 24px; }
-  .section-label { font-size: 10px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
-  .section-title { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 700; margin-bottom: 20px; }
+  /* HERO SECTION */
+  .hero { background: var(--navy-deep); padding: 50px 24px 40px; color: var(--white); position: relative; overflow: hidden; }
+  .hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--gold-bright), transparent); }
   
-  /* SOLUTIONS CARDS */
-  .card { background: var(--white); border: 1px solid var(--border-light); border-radius: 14px; padding: 18px; display: flex; gap: 14px; margin-bottom: 12px; }
-  .card-icon { width: 42px; height: 42px; border-radius: 10px; background: var(--gold-pale); display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
-  .card-name { font-weight: 600; font-size: 15px; margin-bottom: 4px; }
-  .card-desc { font-size: 12.5px; color: var(--text-muted); line-height: 1.5; }
+  .hero-top { display: flex; align-items: center; gap: 18px; margin-bottom: 25px; }
+  .avatar-frame { width: 75px; height: 75px; border-radius: 50%; border: 2px solid var(--gold-bright); padding: 3px; overflow: hidden; }
+  .avatar-inner { width: 100%; height: 100%; border-radius: 50%; background: var(--navy-mid); display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 26px; color: var(--gold-bright); font-weight: 700; }
+  .avatar-inner img { width: 100%; height: 100%; object-fit: cover; }
 
-  /* EXPERTISE GRID */
-  .industry-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .ind-tag { background: var(--white); border: 1px solid var(--border-light); padding: 10px; border-radius: 8px; font-size: 11px; font-weight: 500; display: flex; align-items: center; gap: 8px; }
+  .hero-name { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 700; color: var(--white); line-height: 1.1; }
+  .hero-title { font-size: 10px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gold-bright); margin-top: 4px; }
 
-  /* FUNNEL */
-  .funnel-wrap { padding: 40px 24px; background: var(--white); border-top: 1px solid var(--border-light); }
+  .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 30px; }
+  .stat-item { text-align: center; background: rgba(255,255,255,0.03); padding: 12px 5px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); }
+  .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 700; color: var(--gold-bright); display: block; }
+  .stat-label { font-size: 9px; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.5); }
+
+  /* THE DIAGNOSTIC CONSOLE (FUNNEL) */
+  .console-section { padding: 30px 20px; margin-top: -25px; position: relative; z-index: 10; }
+  .console-card { background: var(--white); border-radius: 20px; padding: 25px 20px; box-shadow: var(--shadow); border: 1px solid var(--border); }
+  
+  .console-tag { display: inline-block; background: var(--gold-pale); color: var(--gold-soft); font-size: 9px; font-weight: 700; padding: 4px 12px; border-radius: 100px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
+  .console-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; margin-bottom: 20px; text-align: center; }
+
   .fstep { display: none; }
   .fstep.active { display: block; animation: fadeInUp 0.4s ease both; }
-  .fstep-q { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; text-align: center; margin-bottom: 24px; }
   .opt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .opt-card { background: var(--cream); border: 1.5px solid var(--border-light); border-radius: 12px; padding: 15px; cursor: pointer; font-size: 13px; font-weight: 500; text-align: center; }
+  .opt-card { background: var(--off-white); border: 1.5px solid var(--border); border-radius: 12px; padding: 15px; cursor: pointer; text-align: center; font-size: 13px; font-weight: 500; transition: 0.2s; }
+  .opt-card:active { transform: scale(0.97); background: var(--gold-pale); border-color: var(--gold-bright); }
   .opt-card.wide { grid-column: span 2; }
-  .opt-card.sel { border-color: var(--gold); background: var(--gold-pale); }
-  
-  .input-box { width: 100%; padding: 14px; border-radius: 10px; border: 1.5px solid var(--border-light); font-family: 'Jost'; font-size: 14px; margin-top: 10px; display: none; }
-  .next-btn { width: 100%; padding: 14px; border-radius: 10px; background: var(--navy); color: white; border: none; font-weight: 600; margin-top: 15px; display: none; }
 
-  /* JOURNEY */
-  .journey-box { background: var(--navy); color: var(--white); padding: 40px 24px; }
-  .journey-text { font-size: 14.5px; line-height: 1.7; color: rgba(255,255,255,0.7); }
-  .journey-text strong { color: var(--gold-light); }
+  .input-field { width: 100%; padding: 14px; border-radius: 10px; border: 1.5px solid var(--border); font-family: 'Jost'; font-size: 14px; margin-top: 10px; display: none; }
+  .console-btn { width: 100%; padding: 16px; border-radius: 12px; background: var(--navy-deep); color: var(--white); border: none; font-weight: 700; margin-top: 15px; cursor: pointer; display: none; }
 
-  .wa-btn { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 18px; border-radius: 14px; background: linear-gradient(135deg, #25D366, #1aad54); color: white; text-decoration: none; font-weight: 700; }
-  .footer { background: var(--navy); padding: 30px 24px; text-align: center; color: rgba(255,255,255,0.4); font-size: 11px; }
+  /* SOLUTIONS & EXPERTISE */
+  .section { padding: 40px 24px; }
+  .section-label { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold-soft); margin-bottom: 10px; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 700; margin-bottom: 25px; }
 
-  @keyframes fadeInUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+  .sol-card { display: flex; gap: 16px; margin-bottom: 20px; padding: 20px; background: var(--off-white); border-radius: 15px; }
+  .sol-icon { width: 45px; height: 45px; background: var(--gold-bright); color: var(--navy-deep); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+  .sol-name { font-weight: 600; font-size: 16px; margin-bottom: 4px; }
+  .sol-desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+
+  /* PORTFOLIO / CLIENTS */
+  .client-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+  .client-tag { padding: 8px 16px; border: 1px solid var(--border); border-radius: 100px; font-size: 12px; font-weight: 500; color: var(--navy-mid); background: var(--white); }
+
+  /* JOURNEY BOX */
+  .journey-box { background: var(--navy-deep); color: var(--white); padding: 50px 24px; position: relative; }
+  .journey-box::before { content: '"'; position: absolute; top: 20px; right: 40px; font-family: 'Cormorant Garamond'; font-size: 120px; color: rgba(255,255,255,0.05); line-height: 1; }
+  .journey-title { font-family: 'Cormorant Garamond', serif; font-size: 28px; color: var(--gold-bright); margin-bottom: 20px; }
+  .journey-text { font-size: 15px; line-height: 1.8; color: rgba(255,255,255,0.75); font-weight: 300; }
+  .journey-text strong { color: var(--white); font-weight: 500; }
+
+  /* FOOTER */
+  .wa-btn { display: flex; align-items: center; justify-content: center; gap: 12px; width: 100%; padding: 20px; border-radius: 15px; background: #25D366; color: white; text-decoration: none; font-weight: 700; font-size: 15px; box-shadow: 0 10px 20px rgba(37,211,102,0.2); }
+  .footer { background: #050a14; padding: 40px 24px; text-align: center; }
+  .footer-creds { font-size: 11px; color: rgba(255,255,255,0.3); margin-top: 15px; letter-spacing: 1px; }
+
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 </style>
 </head>
 <body>
@@ -79,158 +94,181 @@
 
   <div class="hero">
     <div class="hero-top">
-      <div class="avatar-frame"><div class="avatar-inner">MN</div></div>
+      <div class="avatar-frame">
+        <div class="avatar-inner">
+          <img src="profile.jpg" alt="MN" onerror="this.style.display='none'">MN
+        </div>
+      </div>
       <div>
         <div class="hero-name">M Nasim</div>
         <div class="hero-title">The Business Architect</div>
       </div>
     </div>
+    <p style="font-size:15px; color:rgba(255,255,255,0.7); font-style:italic; font-family:'Cormorant Garamond';">"Building the financial & operational backbones for SMEs that scale."</p>
+    
     <div class="stats-row">
-      <div class="stat-item"><span class="stat-num">50+</span><span class="stat-label">SOPs Built</span></div>
-      <div class="stat-item"><span class="stat-num">2</span><span class="stat-label">Biz Running</span></div>
+      <div class="stat-item"><span class="stat-num">50+</span><span class="stat-label">Systems Built</span></div>
+      <div class="stat-item"><span class="stat-num">4</span><span class="stat-label">Biz Running</span></div>
       <div class="stat-item"><span class="stat-num">30+</span><span class="stat-label">SMEs Scaled</span></div>
     </div>
   </div>
 
-  <div class="audit-banner">
-    <div class="audit-title">Free Business System Audit</div>
-    <button class="cta-btn" onclick="document.getElementById('funnel').scrollIntoView({behavior:'smooth'})">Get My Free Audit →</button>
-  </div>
-
-  <div class="funnel-wrap" id="funnel">
-    <div class="fstep active" id="fs1">
-      <div class="fstep-q">Where is your business based?</div>
-      <div class="opt-grid">
-        <div class="opt-card" onclick="save('market','UAE'); show('fs2')">🇦🇪 UAE</div>
-        <div class="opt-card" onclick="save('market','India'); show('fs2')">🇮🇳 India</div>
-      </div>
-    </div>
-
-    <div class="fstep" id="fs2">
-      <div class="fstep-q">Select your industry</div>
-      <div class="opt-grid">
-        <div class="opt-card" onclick="save('ind','Retail'); show('fs3')">Retail</div>
-        <div class="opt-card" onclick="save('ind','Manufacturing'); show('fs3')">Manufacturing</div>
-        <div class="opt-card" onclick="save('ind','Opticals'); show('fs3')">Opticals</div>
-        <div class="opt-card" onclick="save('ind','Clinics'); show('fs3')">Clinics</div>
-        <div class="opt-card" onclick="save('ind','Apparel/Fashion'); show('fs3')">Apparel/Fashion</div>
-        <div class="opt-card" onclick="save('ind','Furniture'); show('fs3')">Furniture</div>
-        <div class="opt-card wide" onclick="toggleOther('ind','fs3')">Other Industry...</div>
-      </div>
-      <input type="text" id="other_ind" class="input-box" placeholder="Type your industry here">
-      <button id="next_ind" class="next-btn" onclick="save('ind', document.getElementById('other_ind').value); show('fs3')">Next →</button>
-    </div>
-
-    <div class="fstep" id="fs3">
-      <div class="fstep-q">Team size & Revenue?</div>
-      <div class="opt-grid">
-        <div class="opt-card" onclick="save('size','1-10 staff'); show('fs4')">1-10 Staff</div>
-        <div class="opt-card" onclick="save('size','10-50 staff'); show('fs4')">10-50 Staff</div>
-        <div class="opt-card" onclick="save('rev','Under 1M'); show('fs5')">Under 1M <span class="curr"></span></div>
-        <div class="opt-card" onclick="save('rev','1M-10M'); show('fs5')">1M-10M <span class="curr"></span></div>
-      </div>
-    </div>
-
-    <div class="fstep" id="fs4">
-        <div class="fstep-q">Annual Revenue?</div>
+  <div class="console-section" id="diagnostic">
+    <div class="console-card">
+      <div style="text-align:center;"><span class="console-tag">Limited Availability</span></div>
+      <div class="console-title" id="consoleTitle">Free Business System Audit</div>
+      
+      <div class="fstep active" id="fs1">
+        <p style="text-align:center; font-size:13px; margin-bottom:15px; color:var(--text-muted);">Where is your business based?</p>
         <div class="opt-grid">
-          <div class="opt-card" onclick="save('rev','Under 1M'); show('fs5')">Under 1M <span class="curr"></span></div>
-          <div class="opt-card" onclick="save('rev','1M-10M'); show('fs5')">1M-10M <span class="curr"></span></div>
-          <div class="opt-card wide" onclick="save('rev','10M+'); show('fs5')">10M+ <span class="curr"></span></div>
+          <div class="opt-card" onclick="save('mkt','UAE'); go('fs2')">🇦🇪 UAE</div>
+          <div class="opt-card" onclick="save('mkt','India'); go('fs2')">🇮🇳 India</div>
         </div>
-    </div>
-
-    <div class="fstep" id="fs5">
-      <div class="fstep-q">Your main bottleneck?</div>
-      <div class="opt-grid">
-        <div class="opt-card" onclick="save('pain','Daily Chaos'); show('fs6')">Daily Chaos</div>
-        <div class="opt-card" onclick="save('pain','Team Management'); show('fs6')">Team / Hiring</div>
-        <div class="opt-card wide" onclick="toggleOther('pain','fs6')">Describe specific problem...</div>
       </div>
-      <input type="text" id="other_pain" class="input-box" placeholder="Type your biggest challenge">
-      <button id="next_pain" class="next-btn" onclick="save('pain', document.getElementById('other_pain').value); show('fs6')">Connect to Nasim →</button>
-    </div>
 
-    <div class="fstep" id="fs6">
-      <div class="fstep-q">Audit Details Saved.</div>
-      <a id="waBtn" href="#" class="wa-btn">Connect on WhatsApp</a>
+      <div class="fstep" id="fs2">
+        <p style="text-align:center; font-size:13px; margin-bottom:15px; color:var(--text-muted);">Which industry do you operate in?</p>
+        <div class="opt-grid">
+          <div class="opt-card" onclick="save('ind','Retail'); go('fs3')">Retail</div>
+          <div class="opt-card" onclick="save('ind','Manufacturing'); go('fs3')">Manufacturing</div>
+          <div class="opt-card" onclick="save('ind','Opticals'); go('fs3')">Opticals</div>
+          <div class="opt-card" onclick="save('ind','Clinics'); go('fs3')">Clinics</div>
+          <div class="opt-card" onclick="save('ind','Furniture'); go('fs3')">Furniture</div>
+          <div class="opt-card wide" onclick="showInput('ind')">Other Industry...</div>
+        </div>
+        <input type="text" id="in_ind" class="input-field" placeholder="Type industry...">
+        <button id="btn_ind" class="console-btn" onclick="save('ind', document.getElementById('in_ind').value); go('fs3')">Continue →</button>
+      </div>
+
+      <div class="fstep" id="fs3">
+        <p style="text-align:center; font-size:13px; margin-bottom:15px; color:var(--text-muted);">Scale: Employees & Revenue</p>
+        <div class="opt-grid">
+          <div class="opt-card" onclick="save('sz','1-10 staff'); go('fs4')">1-10 Staff</div>
+          <div class="opt-card" onclick="save('sz','10-50 staff'); go('fs4')">10-50 Staff</div>
+          <div class="opt-card" onclick="save('rev','Under 1M'); go('fs5')">Under 1M <span class="cur"></span></div>
+          <div class="opt-card" onclick="save('rev','1M-10M'); go('fs5')">1M - 10M <span class="cur"></span></div>
+        </div>
+      </div>
+
+      <div class="fstep" id="fs4">
+        <p style="text-align:center; font-size:13px; margin-bottom:15px; color:var(--text-muted);">Approximate Annual Revenue?</p>
+        <div class="opt-grid">
+          <div class="opt-card" onclick="save('rev','Under 1M'); go('fs5')">Under 1M <span class="cur"></span></div>
+          <div class="opt-card" onclick="save('rev','1M-10M'); go('fs5')">1M - 10M <span class="cur"></span></div>
+          <div class="opt-card wide" onclick="save('rev','10M+'); go('fs5')">10M+ <span class="cur"></span></div>
+        </div>
+      </div>
+
+      <div class="fstep" id="fs5">
+        <p style="text-align:center; font-size:13px; margin-bottom:15px; color:var(--text-muted);">What is your #1 operational bottleneck?</p>
+        <div class="opt-grid">
+          <div class="opt-card" onclick="save('pn','Daily Chaos'); go('fs6')">Daily Chaos</div>
+          <div class="opt-card" onclick="save('pn','Hiring/Team'); go('fs6')">Team / Hiring</div>
+          <div class="opt-card wide" onclick="showInput('pn')">Specific Problem...</div>
+        </div>
+        <input type="text" id="in_pn" class="input-field" placeholder="Describe the problem...">
+        <button id="btn_pn" class="console-btn" onclick="save('pn', document.getElementById('in_pn').value); go('fs6')">Final Step →</button>
+      </div>
+
+      <div class="fstep" id="fs6">
+        <div style="text-align:center; padding:10px 0;">
+          <p style="font-size:14px; margin-bottom:20px;">Diagnostic Complete. Nasim will review your audit details on WhatsApp.</p>
+          <a id="waBtn" href="#" class="wa-btn">🚀 Connect on WhatsApp</a>
+        </div>
+      </div>
+
     </div>
   </div>
 
   <div class="section">
-    <div class="section-label">Expertise</div>
-    <div class="section-title">Industries Handled</div>
-    <div class="industry-grid">
-      <div class="ind-tag">🏭 Manufacturing</div>
-      <div class="ind-tag">🛒 Retail</div>
-      <div class="ind-tag">👔 Apparel</div>
-      <div class="ind-tag">👓 Opticals</div>
-      <div class="ind-tag">🏥 Clinics</div>
-      <div class="ind-tag">🛋️ Furniture</div>
-      <div class="ind-tag">🏗️ Construction</div>
-      <div class="ind-tag">🎓 Education</div>
+    <div class="section-label">Portfolio of Impact</div>
+    <div class="section-title">Selected Clients</div>
+    <div class="client-list">
+      <div class="client-tag">Eyenation Opticals</div>
+      <div class="client-tag">Tale 8 Agency</div>
+      <div class="client-tag">Pearl City Marine</div>
+      <div class="client-tag">Europe Travels</div>
+      <div class="client-tag">Colors & Looms</div>
+      <div class="client-tag">Al Rams Furniture</div>
+      <div class="client-tag">15+ More</div>
     </div>
   </div>
 
-  <div class="section" style="background:var(--white); border-top:1px solid var(--border-light)">
-    <div class="section-label">What I Do</div>
+  <div class="section" style="background:#fcfcfc;">
+    <div class="section-label">Solutions</div>
     <div class="section-title">Architecting Scale</div>
-    <div class="card">
-      <div class="card-icon">⚙️</div>
+    
+    <div class="sol-card">
+      <div class="sol-icon">⚙️</div>
       <div>
-        <div class="card-name">Operational Systems</div>
-        <p class="card-desc">SOPs and workflows that ensure your business runs without you firefighting daily.</p>
+        <div class="sol-name">Operational Systems</div>
+        <p class="sol-desc">Custom SOPs and KPI frameworks so your business runs like a machine, with or without you.</p>
       </div>
     </div>
-    <div class="card">
-      <div class="card-icon">🏛️</div>
+
+    <div class="sol-card">
+      <div class="sol-icon">🏛️</div>
       <div>
-        <div class="card-name">Family Biz Governance</div>
-        <p class="card-desc">Defining roles and governance so family dynamics don't hurt the business growth.</p>
+        <div class="sol-name">Family Biz Governance</div>
+        <p class="sol-desc">Structuring roles and succession so family dynamics don't become business liabilities.</p>
+      </div>
+    </div>
+
+    <div class="sol-card">
+      <div class="sol-icon">📈</div>
+      <div>
+        <div class="sol-name">Performance Mapping</div>
+        <p class="sol-desc">Implementing OKRs and incentive structures that align your team with your profit goals.</p>
       </div>
     </div>
   </div>
 
   <div class="journey-box">
-    <div style="font-size:10px; font-weight:600; text-transform:uppercase; color:var(--gold-light); margin-bottom:12px;">The Journey</div>
+    <div class="journey-title">Faculty to Founder</div>
     <div class="journey-text">
-        At <strong>age 21</strong>, I was already a faculty member training <strong>ACCA professionals</strong> in global finance. Since then, I've launched multiple ventures <strong>running 2 businesses today</strong>, and yes, <strong>failing at a few</strong> along the way. I use that battle-hardened experience to architect unbreakable systems for my clients.
+      At <strong>age 21</strong>, I was already a faculty member training <strong>ACCA professionals</strong> in global finance. <br><br>
+      Since then, I have launched multiple ventures—<strong>running 4 businesses today</strong>, and yes, <strong>failing at a few</strong> along the way. <br><br>
+      I use that battle-hardened experience to architect unbreakable systems for my clients across the UAE and India.
     </div>
   </div>
 
   <div class="footer">
-    <div style="font-family:'Cormorant Garamond'; color:var(--gold-light); font-size:18px; margin-bottom:10px;">M Nasim</div>
-    UAE: +971 55 502 5030 | India: +91 9745 0000 44
+    <div style="font-family:'Cormorant Garamond'; color:var(--gold-bright); font-size:22px; font-weight:700;">M Nasim</div>
+    <div style="font-size:10px; color:rgba(255,255,255,0.4); text-transform:uppercase; letter-spacing:2px; margin-top:5px;">ACCA · Business Architect · Founder</div>
+    <div class="footer-creds">UAE: +971 55 502 5030 | India: +91 9745 0000 44</div>
   </div>
 
 </div>
 
 <script>
   const WA_UAE = '971555025030'; const WA_INDIA = '919745000044';
-  let data = { market: '', ind: '', size: '', rev: '', pain: '' };
+  let data = { mkt: '', ind: '', sz: '', rev: '', pn: '' };
 
-  function save(key, val) { 
-    data[key] = val; 
-    if(key === 'market') {
-      const symbols = document.querySelectorAll('.curr');
-      symbols.forEach(s => s.textContent = (val === 'UAE' ? ' (AED)' : ' (₹)'));
+  function save(k, v) { 
+    data[k] = v; 
+    if(k === 'mkt') {
+      const syms = document.querySelectorAll('.cur');
+      syms.forEach(s => s.textContent = (v === 'UAE' ? '(AED)' : '(₹)'));
     }
   }
 
-  function toggleOther(key, nextId) {
-    document.getElementById('other_' + key).style.display = 'block';
-    document.getElementById('next_' + key).style.display = 'block';
+  function showInput(k) {
+    document.getElementById('in_' + k).style.display = 'block';
+    document.getElementById('btn_' + k).style.display = 'block';
   }
 
-  function show(id) {
+  function go(id) {
     document.querySelectorAll('.fstep').forEach(s => s.classList.remove('active'));
     document.getElementById(id).classList.add('active');
-    if(id === 'fs6') buildLink();
+    if(id === 'fs6') {
+      document.getElementById('consoleTitle').textContent = "Audit Ready";
+      buildLink();
+    }
   }
 
   function buildLink() {
-    const num = data.market === 'UAE' ? WA_UAE : WA_INDIA;
-    const msg = encodeURIComponent(`Hi Nasim! I'd like to book a Free Business Audit.\n\n📍 Market: ${data.market}\n🏢 Industry: ${data.ind}\n👥 Team: ${data.size}\n💰 Revenue: ${data.rev}\n🚨 Problem: ${data.pain}`);
+    const num = data.mkt === 'UAE' ? WA_UAE : WA_INDIA;
+    const msg = encodeURIComponent(`Hi Nasim! I'd like to book a Free Business Audit.\n\n📍 Market: ${data.mkt}\n🏢 Industry: ${data.ind}\n👥 Team: ${data.sz}\n💰 Revenue: ${data.rev}\n🚨 Problem: ${data.pn}`);
     document.getElementById('waBtn').href = `https://wa.me/${num}?text=${msg}`;
   }
 </script>
